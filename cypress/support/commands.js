@@ -29,4 +29,6 @@ Cypress.on('window:before:load', (win) => {
   });
 
 
-  import 'cypress-file-upload';  
+  import 'cypress-file-upload';
+
+  require('@4tw/cypress-drag-drop')

@@ -11,12 +11,16 @@
     "cy-verify-downloads": "^0.1.15",
     "cypress": "^12.16.0",
     "cypress-downloadfile": "^1.2.3",
+    "cypress-drag-drop": "^1.1.1",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1",
+    "cypress-real-events": "^1.8.1",
     "cypress-xpath": "^2.0.1"
   },
   "dependencies": {
-    "cypress-plugin-xhr-toggle": "^1.0.0"
+    "@4tw/cypress-drag-drop": "^2.2.4",
+    "cypress-plugin-xhr-toggle": "^1.0.0",
+    "isomorphic-fetch": "^3.0.0"
   },
   "description": ""
 }

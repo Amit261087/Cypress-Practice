@@ -33,4 +33,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
   require('cypress-xpath');
 
- 
+  import 'cypress-drag-drop';
+
+  import 'isomorphic-fetch';
