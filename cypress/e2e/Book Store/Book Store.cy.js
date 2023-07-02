@@ -1,5 +1,3 @@
-import 'isomorphic-fetch';
-
 describe('Book Store', function(){
 
     it('Book Store', function(){
