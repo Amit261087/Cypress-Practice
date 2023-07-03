@@ -1,3 +1,4 @@
+
 const faker = require('faker');
 
 describe('API - Book Store', function(){
@@ -83,8 +84,8 @@ describe('API - Book Store', function(){
     it('Get User by User ID', function(){
 
         cy.request({
-            method: 'POST',
-            url: `https://bookstore.toolsqa.com/Account/v1/User/${userID}`,
+            method: 'GET',
+            url: `https://demoqa.com/Account/v1/User/${userID}`,
             headers:{
                 Authorization: `Bearer ${token}`,
                 Accept: 'application/json'
@@ -101,9 +102,28 @@ describe('API - Book Store', function(){
             expect(response.status).to.equal(200)
             expect(response.statusText).to.equal('OK')
 
-            cy.log(response.body.userID)
-            cy.log(response.body.userName)
+            cy.log(response.body.userId)
+            cy.log(response.body.username)
 
+        })
+    })
+
+    it.skip('Delete User by User ID', function(){
+
+        cy.request({
+            method: 'DELETE',
+            url: `https://demoqa.com/Account/v1/User/${userID}`,
+            headers: {
+
+                Authorization: `Bearer ${token}`
+
+            }
+        }).then((response)=>{
+
+            cy.log(JSON.stringify(response))
+
+            expect(response.status).to.equal(204)
+            expect(response.statusText).to.equal('No Content')
         })
     })
 })
