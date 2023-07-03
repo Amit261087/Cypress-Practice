@@ -8,7 +8,7 @@ describe('Elements', function(){
         Element.visit()
     })
 
-    it.only('Text Box', function(){
+    it('Text Box', function(){
 
         Element.clickElements();
         Element.verifyElementsHeaderText();
@@ -28,44 +28,21 @@ describe('Elements', function(){
 
     it('Check Box - All Check Boxes', function(){
 
-        
-        cy.get("div[class='category-cards'] div:nth-child(1) div:nth-child(1) div:nth-child(2)").should('be.visible')
-            .click();
-        cy.get('.main-header').should('have.text', 'Elements');
-        cy.get('.btn.btn-light').each(($el, index, $list)=>{
-            const text = $el.text()
-            if(text == 'Check Box'){
-                cy.get('.btn.btn-light').eq(index).click();
-                cy.get('.main-header').should('have.text', 'Check Box')
-                cy.get("#tree-node-home").check({force:true});
-                cy.get('#result').should('contain','You have selected :home')
-            }
-        })
+        Element.clickElements();
+        Element.verifyElementsHeaderText();
+        Element.clickCheckBox();
+        Element.verifyCheckBoxHeaderText();
+        Element.checkHomeCheckBox();
+        Element.verifyHomeCheckBox();
     })
 
     it('Check Box - Single', function(){
 
-        
-        cy.get("div[class='category-cards'] div:nth-child(1) div:nth-child(1) div:nth-child(2)").should('be.visible')
-            .click();
-        cy.get('.main-header').should('have.text', 'Elements');
-        cy.get('.btn.btn-light').each(($el, index, $list)=>{
-            const text = $el.text()
-            if(text == 'Check Box'){
-                cy.get('.btn.btn-light').eq(index).click();
-                cy.get('.main-header').should('have.text', 'Check Box')
-                cy.get("button[class='rct-option rct-option-expand-all']").click()
-                cy.get('span.rct-text').each(($el, index, $list)=>{
-                    const text = $el.text()
-                    if(text == 'React'){
-                        cy.get('span.rct-text').eq(index).click()
-                        cy.get('#result').should('contain', 'react')
-                    }
-
-                })
-            }
-
-        })
+        Element.clickElements();
+        Element.verifyElementsHeaderText();
+        Element.clickCheckBox();
+        Element.verifyCheckBoxHeaderText();
+        Element.selectChildInTree();
 
     })
 
