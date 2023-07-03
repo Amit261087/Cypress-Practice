@@ -1,35 +1,29 @@
+import Elements from "../POM/Elements";
+
 describe('Elements', function(){
 
-    beforeEach(()=>{
+    const Element = new Elements();
 
-        cy.visit("https://demoqa.com/");
+    beforeEach(()=>{
+        Element.visit()
     })
 
-    it('Text Box', function(){
-        
-        cy.get("div[class='category-cards'] div:nth-child(1) div:nth-child(1) div:nth-child(2)").should('be.visible')
-            .click();
-        cy.get('.main-header').should('have.text', 'Elements');
-        cy.get('.btn.btn-light').each(($el, index, $list)=>{
-            const text = $el.text()
-            if (text == 'Text Box'){
-                cy.get('.btn.btn-light').eq(index).click();
+    it.only('Text Box', function(){
 
-                cy.get('#userName').type("Amit");
-                cy.get('#userEmail').type('abc@yahoo.com');
-                cy.get('#currentAddress').type('Pune');
-                cy.get('#permanentAddress').type('Pune');
-                cy.get('#submit').should('be.visible');
-                cy.get('#submit').click();
+        Element.clickElements();
+        Element.verifyElementsHeaderText();
+        Element.clickTextBox();
+        Element.verifyTextBoxHeaderText();
+        Element.enterFullName('Amit Sharma');
+        Element.enterEmail('abc@gmail.com');
+        Element.enterCurrentAddress('Pune');
+        Element.enterPermanentAddress('Agra');
+        Element.clickSubmit();
 
-                cy.get('#name').should('contain', 'Amit')
-                cy.get('#email').should('contain', 'abc@yahoo.com');
-                cy.get('.border > #currentAddress').should('contain', 'Pune');
-                cy.log('Validate Permanent Address');
-                cy.get('.border > #permanentAddress').should('contain', 'Pune');
-
-            }            
-        })
+        Element.verifyBodyName('Amit Sharma');
+        Element.verifyBodyEmail('abc@gmail.com');
+        Element.verifyBodyCurrentAddress('Pune');
+        Element.verifyBodyPermanentAddress('Agra');
     })
 
     it('Check Box - All Check Boxes', function(){

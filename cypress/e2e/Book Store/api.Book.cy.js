@@ -1,10 +1,18 @@
+const account = require('./api.Account.cy');
 
 describe('Book', function(){
 
     let ISBN;
-    const userId = "1ccbe4ae-5308-4e0d-a0f0-d26892f33bfb";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik55YXNpYV9Sb2dhaG4iLCJwYXNzd29yZCI6Ikp1bmVAMjAyMyIsImlhdCI6MTY4ODM3OTE0Nn0.pVvaBj7IxkVxQPX9HOjrXaLu-WWwPUTI77t9PuMhQOE"
+    let userId;
+    let token;
 
+    before(function(){
+        
+        userId = account.getUserID();
+        token = account.getToken();
+        
+    })    
+    
     it('Get All Books', function(){
 
         cy.request({

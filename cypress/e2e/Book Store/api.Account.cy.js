@@ -1,12 +1,19 @@
-
 const faker = require('faker');
 
-describe('API - Book Store', function(){
+let token;
+let userID;
+const password = "June@2023";
+let userName;
 
-    let token
-    let userID
-    const password = "June@2023"
-    let userName
+// Export the required values
+module.exports = {
+  getToken: () => token,
+  getUserID: () => userID,
+  //getPassword: () => password,
+  //getUserName: () => userName
+};
+
+describe('API - Book Store', function(){
 
     it('Create User', function(){
 
@@ -30,6 +37,8 @@ describe('API - Book Store', function(){
 
             const username = response.body
             userName = username.username
+
+            
             cy.log(userID)
             cy.log(userName)
         })
