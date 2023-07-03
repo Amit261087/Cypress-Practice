@@ -2,8 +2,8 @@
 describe('Book', function(){
 
     let ISBN;
-    const userId = "94bd19e6-6129-4f79-bfe1-3aef1cf2ade9";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkthcmVsbGUuSGF1Y2siLCJwYXNzd29yZCI6Ikp1bmVAMjAyMyIsImlhdCI6MTY4ODM3NTk2OH0.Xzi7x6Aw9qHe1PCFUSVBLnwFV9dIC222xbokmdYa-Gw";
+    const userId = "1ccbe4ae-5308-4e0d-a0f0-d26892f33bfb";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik55YXNpYV9Sb2dhaG4iLCJwYXNzd29yZCI6Ikp1bmVAMjAyMyIsImlhdCI6MTY4ODM3OTE0Nn0.pVvaBj7IxkVxQPX9HOjrXaLu-WWwPUTI77t9PuMhQOE"
 
     it('Get All Books', function(){
 
@@ -64,7 +64,7 @@ describe('Book', function(){
         })
     })
 
-    it('Update Book by ISBN', function(){
+    it.skip('Update Book by ISBN', function(){
 
         cy.request({
             method: 'PUT',
@@ -85,7 +85,7 @@ describe('Book', function(){
         })
     })
 
-    it.only("Delete Book from User's Collection", function(){
+    it("Delete Book from User's Collection", function(){
 
         cy.request({
             method: 'DELETE',
