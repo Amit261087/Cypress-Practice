@@ -150,6 +150,48 @@ class Interactions{
         })
     }
 
+    clickResizable(){
+        cy.contains('Resizable')
+            .should('be.visible')
+            .click()
+    }
+
+    verifyResizableHeaderText(){
+        cy.get('.main-header')
+            .should('be.visible')
+            .and('have.text', 'Resizable')
+    }
+
+    performResizable(){
+        cy.get('#resizableBoxWithRestriction')
+            .should('be.visible')
+
+        cy.get('#resizableBoxWithRestriction')
+            .invoke('css', 'width', '500px')
+            .invoke('css', 'height', '300px')
+            .should('have.css', 'width', '500px')
+            .and('have.css', 'height', '300px')
+
+        cy.get('#resizableBoxWithRestriction')
+            .invoke('css', 'width', '2px')
+            .invoke('css', 'height', '2px')
+            .should('have.css', 'width', '2px')
+            .and('have.css', 'height', '2px')
+
+        cy.get('#resizableBoxWithRestriction')
+            .invoke('css', 'width', '200px')
+            .invoke('css', 'height', '200px')
+            .should('have.css', 'width', '200px')
+            .and('have.css', 'height', '200px')
+
+        cy.get('#resizable')
+            .should('be.visible')
+            .invoke('css', 'width', '1000px')
+            .invoke('css', 'height', '1000px')
+            .should('have.css', 'width', '1000px')
+            .and('have.css', 'height', '1000px')
+    }
+
 
 }
 

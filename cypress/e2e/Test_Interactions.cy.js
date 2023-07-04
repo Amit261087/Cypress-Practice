@@ -8,7 +8,7 @@ describe('Interactions', function(){
         Interaction.visit();
     })
 
-    it.only('Sortable - List Tab', function(){
+    it('Sortable - List Tab', function(){
         
         Interaction.verifyHomePageHeaderText();
         Interaction.clickInteractions();
@@ -20,7 +20,7 @@ describe('Interactions', function(){
     })
 
 
-    it.only('Sortable - Grid Tab', function(){
+    it('Sortable - Grid Tab', function(){
 
         Interaction.verifyHomePageHeaderText();
         Interaction.clickInteractions();
@@ -32,7 +32,7 @@ describe('Interactions', function(){
     
     })
 
-    it.only('Selectable - List', function(){
+    it('Selectable - List', function(){
 
         Interaction.verifyHomePageHeaderText();
         Interaction.clickInteractions();
@@ -44,7 +44,7 @@ describe('Interactions', function(){
 
     })
 
-    it.only('Selectable - Grid', function(){
+    it('Selectable - Grid', function(){
 
         Interaction.verifyHomePageHeaderText();
         Interaction.clickInteractions();
@@ -56,53 +56,15 @@ describe('Interactions', function(){
 
     })
 
-    it('Resizable', function(){
-        cy.on('uncaught:exception', ()=>false)
-        cy.visit('https://demoqa.com/')
+    it.only('Resizable', function(){
 
-        cy.contains('Interactions')
-            .should('be.visible')
-            .click()
+        Interaction.verifyHomePageHeaderText();
+        Interaction.clickInteractions();
+        Interaction.verifyInteractionsHeaderText();
+        Interaction.clickResizable();
+        Interaction.verifyResizableHeaderText();
+        Interaction.performResizable();
 
-        cy.get('.main-header')
-            .should('be.visible')
-            .and('have.text', 'Interactions')
-
-        cy.contains('Resizable')
-            .should('be.visible')
-            .click()
-
-        cy.get('.main-header')
-            .should('be.visible')
-            .and('have.text', 'Resizable')
-
-        cy.get('#resizableBoxWithRestriction')
-            .should('be.visible')
-
-        cy.get('#resizableBoxWithRestriction')
-            .invoke('css', 'width', '500px')
-            .invoke('css', 'height', '300px')
-            .should('have.css', 'width', '500px')
-            .and('have.css', 'height', '300px')
-
-        cy.get('#resizableBoxWithRestriction')
-            .invoke('css', 'width', '2px')
-            .invoke('css', 'height', '2px')
-            .should('have.css', 'width', '2px')
-            .and('have.css', 'height', '2px')
-
-        cy.get('#resizableBoxWithRestriction')
-            .invoke('css', 'width', '200px')
-            .invoke('css', 'height', '200px')
-            .should('have.css', 'width', '200px')
-            .and('have.css', 'height', '200px')
-
-        cy.get('#resizable')
-            .should('be.visible')
-            .invoke('css', 'width', '1000px')
-            .invoke('css', 'height', '1000px')
-            .should('have.css', 'width', '1000px')
-            .and('have.css', 'height', '1000px')        
     })
 
     it('Droppable - Simple', function(){
