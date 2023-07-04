@@ -103,7 +103,52 @@ class Interactions{
             .and('have.text', 'Selectable');
     }
 
-    verify
+    verifyLandingAsListTab(){
+        cy.get('#demo-tab-list')
+            .should('be.visible')
+            .and('have.text', 'List')
+            .and('have.attr', 'aria-selected', 'true')
+
+        cy.get('#demo-tab-grid')
+            .should('be.visible')
+            .and('have.text', 'Grid')
+            .and('have.attr', 'aria-selected', 'false')
+    }
+
+    performSelectableOnList(){
+        cy.get('.mt-2.list-group-item.list-group-item-action')
+            .each(($el, index, $list)=>{
+                const text = $el.text()
+                if(text == 'Morbi leo risus'){
+                    cy.get('.mt-2.list-group-item.list-group-item-action').eq(index).click()
+                        .should('have.class', 'mt-2 list-group-item active list-group-item-action')
+                }
+        })
+    }
+
+    verifyLandingAsGridTab(){
+        cy.get('#demo-tab-grid')
+            .should('be.visible')
+            .click()
+            .should('have.text', 'Grid')
+            .and('have.attr', 'aria-selected', 'true')
+
+        cy.get('#demo-tab-list')
+            .should('be.visible')
+            .and('have.text', 'List')
+            .and('have.attr', 'aria-selected', 'false')
+    }
+
+    performSelectableOnGrid(){
+        cy.get('.list-group-item.list-group-item-action')
+            .each(($el, index, $list)=>{
+                const text = $el.text()
+                if(text == 'Six'){
+                    cy.get('.list-group-item.list-group-item-action').eq(index).click()
+                        .should('have.class', 'list-group-item active list-group-item-action')
+                }
+        })
+    }
 
 
 }

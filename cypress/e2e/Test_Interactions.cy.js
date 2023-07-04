@@ -8,7 +8,7 @@ describe('Interactions', function(){
         Interaction.visit();
     })
 
-    it('Sortable - List Tab', function(){
+    it.only('Sortable - List Tab', function(){
         
         Interaction.verifyHomePageHeaderText();
         Interaction.clickInteractions();
@@ -20,7 +20,7 @@ describe('Interactions', function(){
     })
 
 
-    it('Sortable - Grid Tab', function(){
+    it.only('Sortable - Grid Tab', function(){
 
         Interaction.verifyHomePageHeaderText();
         Interaction.clickInteractions();
@@ -39,71 +39,21 @@ describe('Interactions', function(){
         Interaction.verifyInteractionsHeaderText();
         Interaction.clickSelectable();
         Interaction.verifySelectableMenuHeaderText();
-        
-        
-        
+        Interaction.verifyDefaultLandingAsListTab();
+        Interaction.performSelectableOnList();
 
-        
-
-        cy.get('#demo-tab-list')
-            .should('be.visible')
-            .and('have.text', 'List')
-            .and('have.attr', 'aria-selected', 'true')
-
-        cy.get('#demo-tab-grid')
-            .should('be.visible')
-            .and('have.text', 'Grid')
-            .and('have.attr', 'aria-selected', 'false')
-
-        cy.get('.mt-2.list-group-item.list-group-item-action')
-            .each(($el, index, $list)=>{
-                const text = $el.text()
-                if(text == 'Morbi leo risus'){
-                    cy.get('.mt-2.list-group-item.list-group-item-action').eq(index).click()
-                        .should('have.class', 'mt-2 list-group-item active list-group-item-action')
-                }
-            })
     })
 
-    it('Selectable - Grid', function(){
-        cy.on('uncaught:exception', ()=>false)
-        cy.visit('https://demoqa.com/')
+    it.only('Selectable - Grid', function(){
 
-        cy.contains('Interactions')
-            .should('be.visible')
-            .click()
+        Interaction.verifyHomePageHeaderText();
+        Interaction.clickInteractions();
+        Interaction.verifyInteractionsHeaderText();
+        Interaction.clickSelectable();
+        Interaction.verifySelectableMenuHeaderText();
+        Interaction.verifyLandingAsGridTab();
+        Interaction.performSelectableOnGrid();
 
-        cy.get('.main-header')
-            .should('be.visible')
-            .and('have.text', 'Interactions')
-
-        cy.contains('Selectable')
-            .should('be.visible')
-            .click()
-
-        cy.get('.main-header')
-            .should('be.visible')
-            .and('have.text', 'Selectable')
-
-        cy.get('#demo-tab-grid')
-            .should('be.visible')
-            .click()
-            .should('have.text', 'Grid')
-            .and('have.attr', 'aria-selected', 'true')
-
-        cy.get('#demo-tab-list')
-            .should('be.visible')
-            .and('have.text', 'List')
-            .and('have.attr', 'aria-selected', 'false')
-
-        cy.get('.list-group-item.list-group-item-action')
-            .each(($el, index, $list)=>{
-                const text = $el.text()
-                if(text == 'Six'){
-                    cy.get('.list-group-item.list-group-item-action').eq(index).click()
-                        .should('have.class', 'list-group-item active list-group-item-action')
-                }
-            })
     })
 
     it('Resizable', function(){
