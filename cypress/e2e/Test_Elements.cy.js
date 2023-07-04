@@ -10,6 +10,7 @@ describe('Elements', function(){
 
     it('Text Box', function(){
 
+        Element.verifyHomePageHeaderText();
         Element.clickElements();
         Element.verifyElementsHeaderText();
         Element.clickTextBox();
@@ -28,16 +29,19 @@ describe('Elements', function(){
 
     it('Check Box - All Check Boxes', function(){
 
+        Element.verifyHomePageHeaderText();
         Element.clickElements();
         Element.verifyElementsHeaderText();
         Element.clickCheckBox();
         Element.verifyCheckBoxHeaderText();
         Element.checkHomeCheckBox();
         Element.verifyHomeCheckBox();
+
     })
 
     it('Check Box - Single', function(){
 
+        Element.verifyHomePageHeaderText();
         Element.clickElements();
         Element.verifyElementsHeaderText();
         Element.clickCheckBox();
@@ -48,155 +52,50 @@ describe('Elements', function(){
 
     it('Radio Button', function(){
 
-        
-        cy.get("img[src='/images/Toolsqa.jpg']").should('be.visible');
-
-        cy.get("div[class='category-cards'] div:nth-child(1) div:nth-child(1) div:nth-child(2)").should('be.visible')
-            .click();
-
-        cy.get('.main-header').should('contain', 'Elements');
-
-        cy.wait(5000)
-
-        cy.get('.btn.btn-light').each(($el, index, $list)=>{
-            const text = $el.text()
-            if(text == 'Radio Button'){
-                cy.get('.btn.btn-light').eq(index).click();
-                cy.get('.main-header').should('have.text', 'Radio Button')
-                cy.get('.mb-3').should('have.text', 'Do you like the site?')
-                cy.get("label[for='yesRadio']")
-                    .should('be.visible')
-                    .click();
-                cy.get('.mt-3').should('contain', 'Yes')
-                cy.get("label[for='impressiveRadio']")
-                    .should('be.visible')
-                    .click();
-                cy.get('.mt-3').should('contain', 'Impressive')
-
-                cy.get("#noRadio")
-                    .then(($el) => {
-                        $el.css('opacity', '1'); // Modify the CSS property to make the element visible
-                        return $el;
-                    })
-                    .should('be.visible')
-                    .click({force:true});
-
-                // Reset the CSS property to its original value
-                cy.get("#noRadio").then(($el) => {
-                    $el.css('opacity', '0');
-                });
-            }
-        })
+        Element.verifyHomePageHeaderText();
+        Element.clickElements();
+        Element.verifyElementsHeaderText();
+        Element.clickRadioButton();
+        Element.veryfyRadioButtonHeaderText();
+        Element.selectYesRadioButton();
+        Element.verifyYesRadioButtonSelected();
+        Element.selectImpressiveRadioButton();
+        Element.verifyImpressiveRadioButtonSelected();
+        Element.selectNoRadioButton();
     })
 
     it('Web Table', function(){
 
+        Element.verifyHomePageHeaderText();
+        Element.clickElements();
+        Element.verifyElementsHeaderText();
+        Element.clickWebTables();
+        Element.verifyWebTablesHeaderText();
+        Element.clickAddNewRecord();
+        Element.verifyRegistrationFormModel();
+        Element.fillRegistrationForm();
+        Element.submitRegistrationForm();
+        Element.verifyNewRecord();               
         
-        cy.get("img[src='/images/Toolsqa.jpg']").should('be.visible')
-
-        cy.get("div[class='card-body']").each(($el, index, $list)=>{
-            const text = $el.text()
-            if(text == 'Elements'){
-
-                cy.get("div[class='card-body']").eq(index).click()
-
-                cy.get('.main-header').should('have.text', 'Elements')
-                
-                cy.get('.btn.btn-light').each(($el, index, $list1)=>{
-
-                    const text = $el.text()
-
-                    if(text == 'Web Tables'){
-                        cy.get('.btn.btn-light').eq(index).click()
-
-                        cy.get('.main-header').should('have.text', 'Web Tables')
-
-                        cy.get('#addNewRecordButton')
-                            .should('be.visible')
-                            .click()
-
-                        cy.get('#registration-form-modal'). should('be.visible')
-
-                        cy.get('#firstName').type('Amit')
-                        cy.get('#lastName').type('Sharma')
-                        cy.get('#userEmail').type('amit.sharma@gmail.com')
-                        cy.get('#age').type(30)
-                        cy.get('#salary').type(15000)
-                        cy.get('#department').type('IT')
-                        cy.get('#submit').click()
-
-                        cy.get('.rt-td').each(($el, index, $list)=>{
-                            const cellText = $el.text()
-                            if(cellText == 'Alden'){
-                                const $row = $el.closest("div[class='rt-tr-group']")
-
-                                const rowData = $row.find("div[class='rt-td']").map((_, cell)=> Cypress.$(cell).text())
-                                
-
-                                cy.log(rowData.get().join(' | '))
-                            }
-                        })
-
-                        cy.get('.mb-3.input-group').type('Alden')
-                    }
-                })
-            }
-        })
     })
 
     it('Buttons', function(){
 
-        cy.get("img[src='/images/Toolsqa.jpg']").should('be.visible')
-
-        cy.get("div[class='card-body']").each(($el, index, $list)=>{
-            const text = $el.text()
-            if(text == 'Elements'){
-
-                cy.get("div[class='card-body']").eq(index).click()
-
-                cy.get('.main-header').should('have.text', 'Elements')
-                
-                cy.get('.btn.btn-light').each(($el, index, $list1)=>{
-
-                    const text = $el.text()
-
-                    if(text == 'Buttons'){
-                        cy.get('.btn.btn-light').eq(index).click()
-
-                        cy.get('.main-header').should('have.text', 'Buttons')
-
-                        //Double Click Button
-                        cy.get('#doubleClickBtn').should('be.visible')
-                            .dblclick()
-                        cy.get('#doubleClickMessage').should('contain', 'double')
-
-                        //Right Click button
-                        cy.get('#rightClickBtn').should('be.visible')
-                            .rightclick()
-                        cy.get('#rightClickMessage').should('contain', 'right')
-
-                        //Click on button                        
-                        cy.get("[class='btn btn-primary']").each(($el, index, $list)=>{
-                            const text = $el.text()                            
-                            if(text == 'Click Me'){
-
-                                cy.get("[class='btn btn-primary']").eq(index)
-                                    .should('be.visible')
-                                    .click()
-
-                                cy.get('#dynamicClickMessage').should('contain', 'dynamic')                           
-
-                            }
-                        })
-                    }
-                    
-                })
-            }
-        })
-
+        Element.verifyHomePageHeaderText();
+        Element.clickElements();
+        Element.verifyElementsHeaderText();
+        Element.clickButtons();
+        Element.verifyButtonsHeaderText();
+        Element.clickDoubleClickButton();
+        Element.verifyDoubleClick();
+        Element.clickRightClickButton();
+        Element.verifyRightClick();
+        Element.clickClickMeButton();
+        Element.verifyClickMeClicked();
+        
     })
 
-    it('Links', function(){
+    it.only('Links', function(){
 
         cy.get("img[src='/images/Toolsqa.jpg']").should('be.visible')
 

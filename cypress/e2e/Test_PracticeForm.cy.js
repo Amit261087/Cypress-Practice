@@ -8,6 +8,7 @@ describe('Forms', function() {
   });
 
   it('Practice Form', function() {
+    formPage.verifyHomePageHeaderText();
     formPage.clickFormsLink();
     formPage.verifyFormsHeaderText();
     formPage.clickPracticeFormLink();

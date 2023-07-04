@@ -4,6 +4,11 @@ class Forms{
         cy.visit('https://demoqa.com/')
     }
 
+    verifyHomePageHeaderText(){
+      cy.get("img[src='/images/Toolsqa.jpg']")
+        .should('be.visible');
+    }
+
     clickFormsLink(){
         cy.contains('Forms').click()
     }
