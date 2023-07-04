@@ -10,7 +10,7 @@ describe('Interactions', function(){
 
     it('Sortable - List Tab', function(){
         
-        Interaction.verifyHomePageHeaderText();
+        Interaction.verifyHomePageHeaderText()
         Interaction.clickInteractions();
         Interaction.verifyInteractionsHeaderText();
         Interaction.clickSortableMenu();
