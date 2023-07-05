@@ -240,7 +240,7 @@ class Elements{
             }
         })
 
-        cy.get('.mb-3.input-group').type('Amit')
+        cy.get('.mb-3.input-group').type('Amit');
     }
 
     clickButtons(){
