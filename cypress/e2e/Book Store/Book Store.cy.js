@@ -19,7 +19,7 @@ describe('Book Store', function(){
 
         cy.get('#password')
             .should('be.visible')
-            .type('June@2023')
+            .type('June@2023');
 
         cy.get('#login')
             .should('be.visible')
