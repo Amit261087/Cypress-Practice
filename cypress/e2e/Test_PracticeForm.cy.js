@@ -28,5 +28,6 @@ describe('Forms', function() {
     formPage.clickSubmitButton();
     formPage.verifyConfirmationMessage();
     formPage.clickCloseButton();
+    
   });
 });

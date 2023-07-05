@@ -1,11 +1,16 @@
 class Forms{
 
+    demoqaurl = 'https://demoqa.com/';
+    toolsQAImage = "img[src='/images/Toolsqa.jpg']";
+    header = '.main-header';
+    practiceFormMenu = "li[class='btn btn-light ']"
+
     visit(){
-        cy.visit('https://demoqa.com/')
+        cy.visit(this.demoqaurl)
     }
 
     verifyHomePageHeaderText(){
-      cy.get("img[src='/images/Toolsqa.jpg']")
+      cy.get(this.toolsQAImage)
         .should('be.visible');
     }
 
@@ -14,13 +19,13 @@ class Forms{
     }
 
     verifyFormsHeaderText(){
-        cy.get('.main-header')
+        cy.get(this.header)
             .should('be.visible')
             .should('have.text', 'Forms')
     }
 
     clickPracticeFormLink(){
-        cy.get("li[class='btn btn-light ']")
+        cy.get(this.practiceFormMenu)
             .contains('Practice Form')
             .should('be.visible')
             .click()

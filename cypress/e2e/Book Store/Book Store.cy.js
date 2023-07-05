@@ -1,6 +1,6 @@
-describe.skip('Book Store', function(){
+describe('Book Store', function(){
 
-    it.skip('Book Store', function(){
+    it('Book Store', function(){
         cy.on('uncaught:exception',()=>false)
         cy.visit('https://demoqa.com/')
 

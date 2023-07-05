@@ -293,6 +293,8 @@ class Elements{
         cy.get('#dynamicClickMessage')
             .should('contain', 'dynamic') 
     }
+
+    
 }
 
 export default Elements;
