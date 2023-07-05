@@ -159,7 +159,7 @@ class Interactions{
     verifyResizableHeaderText(){
         cy.get('.main-header')
             .should('be.visible')
-            .and('have.text', 'Resizable')
+            .and('have.text', 'Resizable');
     }
 
     performResizable(){
