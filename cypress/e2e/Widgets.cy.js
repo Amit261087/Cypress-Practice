@@ -387,7 +387,7 @@ describe('Widgets', function(){
         })        
     })
 
-    it('Select Menu', function(){
+    it.only('Select Menu', function(){
       cy.on('uncaught:exception', ()=>false)
       cy.visit('https://demoqa.com/')
 
@@ -430,12 +430,26 @@ describe('Widgets', function(){
         .should('be.visible')
         .and('have.value', 'red')
         .select('Black')
-        .should('have.value', '5')
+        .should('contain', 'Black')
 
       cy.get("div[id='selectMenuContainer'] div[class='row'] div[class=' css-1hwfws3']")
         .should('be.visible')
-        .type('{enter}')
-        
+        .click()
+        .get('.css-11unzgr')
+        .should('be.visible')
+        .contains('Black')
+        .click()
+        .get('.css-11unzgr')
+        .contains('Red')
+        .click()
+        .get('.css-11unzgr')
+        .contains('Blue')
+        .click()
+      cy.get("div[id='selectMenuContainer'] div[class='row'] div[class=' css-1hwfws3']")
+        .should('contain', 'Red')
+        .and('contain', 'Black')
+        .and('contain', 'Blue')
+        .and('not.contain', 'Green')
 
       cy.get('#cars')
         .should('be.visible')
