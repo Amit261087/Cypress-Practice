@@ -65,64 +65,6 @@ describe('Widgets', function(){
 
     })
 
-    /*it.only('Date Picker', function(){
-        cy.on('uncaught:exception', () => false);
-        cy.visit('https://demoqa.com');
-        cy.contains('Widgets')
-            .should('be.visible')
-            .click();
-    
-        cy.contains('Date Picker')
-            .should('be.visible')
-            .click();
-    
-        cy.get('.main-header')
-            .should('be.visible')
-            .and('have.text', 'Date Picker');
-    
-        cy.get('#datePickerMonthYearInput')
-            .click();     
-    
-        cy.get('.react-datepicker__year-select')
-            .select('2020')
-    
-        cy.get('.react-datepicker__month-select')
-            .select('October')
-    
-        cy.get('.react-datepicker__day')
-            .contains(14)
-            .click()
-    
-        cy.get('#datePickerMonthYearInput')
-            .should('have.value', '10/14/2020'); 
-    
-        cy.get('#dateAndTimePickerInput')
-            .click();
-
-        cy.get('.react-datepicker__year-read-view--selected-year')
-            .click()
-        cy.get('.react-datepicker__year-option')
-            .contains('2018')
-            .click()
-        cy.get('.react-datepicker__month-read-view--selected-month')
-            .click()
-
-        cy.get('.react-datepicker__month-option')
-            .contains('August')
-            .click()
-
-        cy.get('.react-datepicker__day')
-            .contains('15')
-            .click()
-
-        cy.get('.react-datepicker__time-list-item ')
-            .contains('20:00')
-            .click()
-
-        cy.get('#dateAndTimePickerInput')
-            .should('have.value', 'August 15, 2018 8:00 PM')        
-    
-    });*/
 
     it('Date Picker', function () {
         cy.on('uncaught:exception', () => false);

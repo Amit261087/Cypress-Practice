@@ -23,7 +23,6 @@ describe('Alerts Frames Windows', function(){
         cy.on('window:alert', (text)=>{
             expect(text).to.contains('You clicked a button')
         })
-
     })
 
     it('Alert with 5 seconds delay', function(){
