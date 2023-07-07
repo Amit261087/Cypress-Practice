@@ -27,7 +27,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
   require('cy-verify-downloads').addCustomCommand();
 
-  import 'cypress-plugin-xhr-toggle'
+  import 'cypress-plugin-xhr-toggle';
 
   import 'cypress-iframe';
 
@@ -36,3 +36,5 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   import 'cypress-drag-drop';
 
   import 'isomorphic-fetch';
+
+  import 'cypress-plugin-steps';

@@ -1,4 +1,5 @@
 import Forms from "../POM/PracticeForm";
+import testData from "../fixtures/Data.json"
 
 describe('Forms', function() {
   const formPage = new Forms();
@@ -13,18 +14,18 @@ describe('Forms', function() {
     formPage.verifyFormsHeaderText();
     formPage.clickPracticeFormLink();
 
-    formPage.fillFirstName('Amit');
-    formPage.fillLastName('Sharma');
-    formPage.fillEmail('abc@gmail.com');
+    formPage.fillFirstName(testData.firstName);
+    formPage.fillLastName(testData.lastName);
+    formPage.fillEmail(testData.email);
     formPage.selectGender();
-    formPage.fillPhoneNumber('8600995961');
-    formPage.selectDateOfBirth('26 Oct 1987');
-    formPage.selectSubject('Commerce');
+    formPage.fillPhoneNumber(testData.mobile);
+    formPage.selectDateOfBirth(testData.dob);
+    formPage.selectSubject(testData.subject);
     formPage.selectHobby();
     formPage.uploadPicture('Amit.jpg');
-    formPage.fillCurrentAddress('Canada');
-    formPage.selectState('Uttar Pradesh');
-    formPage.selectCity('Agra');
+    formPage.fillCurrentAddress(testData.currentAddress);
+    formPage.selectState(testData.state);
+    formPage.selectCity(testData.city);
     formPage.clickSubmitButton();
     formPage.verifyConfirmationMessage();
     formPage.clickCloseButton();

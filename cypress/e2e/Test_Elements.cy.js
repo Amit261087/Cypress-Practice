@@ -64,7 +64,7 @@ describe('Elements', function(){
         Element.selectNoRadioButton();
     })
 
-    it('Web Table', function(){
+    it.only('Web Table', function(){
 
         Element.verifyHomePageHeaderText();
         Element.clickElements();
@@ -95,7 +95,7 @@ describe('Elements', function(){
         
     })
 
-    it.only('Links', function(){
+    it('Links', function(){
 
         cy.get("img[src='/images/Toolsqa.jpg']").should('be.visible')
 
