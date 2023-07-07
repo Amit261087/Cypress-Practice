@@ -26,7 +26,7 @@ describe('Alerts Frames Windows', function(){
     })
 
     it('Alert with 5 seconds delay', function(){
-        cy.visit('https://demoqa.com/alerts')
+        cy.visit('https://demoqa.com/alerts');
         cy.get('#timerAlertButton').click().wait(1000)
         cy.on('window:alert', (text)=>{
             expect(text).to.contains('This alert appeared after 5 seconds')
